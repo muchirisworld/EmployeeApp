@@ -16,6 +16,7 @@
         <primefaces.version>13.0.0</primefaces.version>
         <maven.compiler.version>3.12.1</maven.compiler.version>
         <maven.war.version>3.4.0</maven.war.version>
+        <mysql.version>8.0.33</mysql.version>
     </properties>
     
     <dependencies>
@@ -32,6 +33,13 @@
             <artifactId>primefaces</artifactId>
             <version>${primefaces.version}</version>
             <classifier>jakarta</classifier>
+        </dependency>
+        
+        <!-- MySQL JDBC Driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
     </dependencies>
     
