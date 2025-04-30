@@ -12,10 +12,8 @@ public class Employee implements Serializable {
     private String department;
     private Double salary;
     
-    // Default constructor
     public Employee() {}
     
-    // Constructor with all fields
     public Employee(Long id, String firstName, String lastName, String email, String department, Double salary) {
         this.id = id;
         this.firstName = firstName;
@@ -25,7 +23,6 @@ public class Employee implements Serializable {
         this.salary = salary;
     }
     
-    // Getters and Setters
     public Long getId() {
         return id;
     }
