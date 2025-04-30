@@ -76,7 +76,18 @@ public class EmployeeBean implements Serializable {
     }
     
     public void delete(Long id) {
+        if (id == null) {
+            addErrorMessage("Employee ID is required for deletion");
+            return;
+        }
+        
         try {
+            Employee empToDelete = employeeDAO.findById(id);
+            if (empToDelete == null) {
+                addErrorMessage("Employee not found");
+                return;
+            }
+            
             employeeDAO.delete(id);
             addSuccessMessage("Employee deleted successfully");
             loadEmployees();
