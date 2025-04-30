@@ -25,6 +25,10 @@ public class EmployeeBean implements Serializable {
     
     @PostConstruct
     public void init() {
+        loadEmployees();
+    }
+    
+    private void loadEmployees() {
         try {
             employees = employeeDAO.findAll();
         } catch (SQLException e) {
@@ -34,7 +38,9 @@ public class EmployeeBean implements Serializable {
     
     public void save() {
         try {
-            employeeDAO.create(employee);
+            employeeDAO.create(employee);    
+            loadEmployees();
+            employee = new Employee();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,6 +53,7 @@ public class EmployeeBean implements Serializable {
     public void delete(Long id) {
         try {
             employeeDAO.delete(id);
+            loadEmployees();
         } catch (SQLException e) {
             e.printStackTrace();
         }
