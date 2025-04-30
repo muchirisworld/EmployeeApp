@@ -10,6 +10,13 @@
     </h:head>
     
     <h:body>
+        <h:form id="dialogForm">
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+            </p:confirmDialog>
+        </h:form>
+
         <h:form id="employeeForm">
             <p:messages id="messages" showDetail="true" autoUpdate="true" />
             
@@ -58,7 +65,11 @@
                                    action="#{employeeBean.delete(emp.id)}"
                                    styleClass="p-button-danger"
                                    update="@form"
-                                   process="@this" />
+                                   process="@this">
+                        <p:confirm header="Delete Employee"
+                                 message="Are you sure you want to delete this employee?"
+                                 icon="pi pi-exclamation-triangle" />
+                    </p:commandButton>
                 </p:column>
             </p:dataTable>
         </h:form>
