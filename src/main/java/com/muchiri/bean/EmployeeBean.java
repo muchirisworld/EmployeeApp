@@ -3,14 +3,17 @@ package com.muchiri.bean;
 import com.muchiri.dao.EmployeeDAO;
 import com.muchiri.model.Employee;
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
 @Named
-@RequestScoped
-public class EmployeeBean {
+@SessionScoped
+public class EmployeeBean implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     private Employee employee;
     private List<Employee> employees;
     private final EmployeeDAO employeeDAO;
@@ -28,6 +31,27 @@ public class EmployeeBean {
             e.printStackTrace();
         }
     }
+    
+    public void save() {
+        try {
+            employeeDAO.create(employee);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void edit(Employee emp) {
+        this.employee = emp;
+    }
+    
+    public void delete(Long id) {
+        try {
+            employeeDAO.delete(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     public Employee getEmployee() {
         return employee;

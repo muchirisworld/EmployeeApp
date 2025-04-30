@@ -10,13 +10,13 @@
     </h:head>
     
     <h:body>
-
         <h:form>
             <div style="text-align: center; margin-top: 20px;">
                 <h1>Employee Management System</h1>
-                <p:commandButton value="Add Employee" icon="pi pi-plus" 
-                                action="#{employeeBean.prepareCreate()}" update="@form" 
-                                style="margin-bottom: 20px;" />
+                <p:button value="Add Employee"
+                                icon="pi pi-plus" 
+                                outcome="create" 
+                                styleClass="p-button-success" />
             </div>
 
             <p:dataTable value="#{employeeBean.employees}" var="emp" 
