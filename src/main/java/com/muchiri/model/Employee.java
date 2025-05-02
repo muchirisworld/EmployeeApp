@@ -23,6 +23,11 @@ public class Employee implements Serializable {
         this.salary = salary;
     }
     
+    public Employee(Long id, String firstName) {
+        this.id = id;
+        this.firstName = firstName;
+    }
+    
     public Long getId() {
         return id;
     }
